@@ -6,3 +6,4 @@ use App\Core\App;
 
 $app = new App();
 
+echo 'teste';
