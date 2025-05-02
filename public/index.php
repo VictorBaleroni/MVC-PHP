@@ -4,6 +4,4 @@ require '../bootstrap.php';
 
 use App\Core\App;
 
-$app = new App();
-
-echo 'teste';
+$app = new App($routes);
