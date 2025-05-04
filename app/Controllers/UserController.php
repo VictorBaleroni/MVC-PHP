@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Controllers;
 
-class UserCotroller{
+class UserController{
 
     public function index(){
 
-        
+        echo 'USER';
     }
 }
