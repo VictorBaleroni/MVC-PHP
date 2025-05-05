@@ -1,15 +1,14 @@
 <?php
 
+use App\Core\Controller;
 
-class UserController{
-
+class UserController extends Controller{
     public function index(){
-        echo 'USER';
+       $this->view('user/index');
     }
     public function edit($id = null){
         if(is_numeric($id)){
             echo $id;
-            
         }
     }
 }
