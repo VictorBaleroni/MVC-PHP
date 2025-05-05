@@ -16,6 +16,7 @@ class App{
         $this->uri = Uri::uri();
         $URL_ARRAY = $this->parseUrl();
         $this->getController($URL_ARRAY);
+        $this->getParams($URL_ARRAY);
 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
@@ -40,17 +41,19 @@ class App{
         if(file_exists($controllerPath)){
             require $controllerPath;
             
-        if(class_exists($this->controller)){
-            $this->controller = new $this->controller();
-        }else{
-            throw new \Exception("O Controller {$this->controller} não encontrado.");    
-        }
+            if(class_exists($this->controller)){
+                $this->controller = new $this->controller();
+            }else{
+                throw new \Exception("O Controller {$this->controller} não encontrado.");    
+            }
         }else{
             throw new \Exception("Arquivo não encontrado.");
         }
     }
 
-    private function getParams(){
-        
+    private function getParams($url){
+        if(count($url) > 1){
+            $this->params = array_slice($url, 1);
+        }
     }
 }
