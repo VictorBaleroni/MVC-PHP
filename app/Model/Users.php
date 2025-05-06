@@ -6,13 +6,14 @@ use App\Core\Database;
 use PDO;
 
 class Users{
-    public static function findAll(){
-        $conn = new Database();
-        $res = $conn->execQuery('SELECT * FROM users');
-        return $res->fetchAll(PDO::FETCH_ASSOC);
+    private $conn;
+
+    public function __construct(){
+        $this->conn = new Database();
     }
 
-    public static function findById(int $id){
-
+    public function getAllUsers(){
+        $sql = "SELECT * FROM users";
+        return $this->conn->findAll($sql);
     }
 }

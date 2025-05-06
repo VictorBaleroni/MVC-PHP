@@ -24,20 +24,34 @@ class Database{
         return self::$pdo;
     }
 
-    private function defParams($stmt, $key, $value){
-        $stmt->bindParam($key,$value);
-    }
-
-    private function makeQuery($stmt, $params){
-        foreach($params as $key => $value){
-            $this->defParams($stmt, $key, $value);
-        }
-    }
-
-    public function execQuery(string $query, array $params = []){
-        $stmt = $this->conn()->prepare($query);
-        $this->makeQuery($stmt, $params);
-        $stmt->execute();
+    private function query($sql, $params = []){
+        $stmt = $this->conn()->prepare($sql);
+        $stmt->execute($params);
         return $stmt;
+    }
+
+    public function findById(string $sql, array $params = []){
+        $stmt = $this->query($sql, $params);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function findAll(string $sql, array $params = []){
+        $stmt = $this->query($sql, $params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function insert(string $sql, array $params = []){
+        $stmt = $this->query($sql, $params);
+        return $this->conn()->lastInsertId();
+    }
+
+    public function update(string $sql, array $params = []){
+        $stmt = $this->query($sql, $params);
+        return $stmt->rowCount();
+    }
+
+    public function delete(string $sql, array $params = []){
+        $stmt = $this->query($sql, $params);
+        return $stmt->rowCount();
     }
 }
