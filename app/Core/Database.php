@@ -32,7 +32,7 @@ class Database{
 
     public function findById(string $sql, array $params = []){
         $stmt = $this->query($sql, $params);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function findAll(string $sql, array $params = []){
