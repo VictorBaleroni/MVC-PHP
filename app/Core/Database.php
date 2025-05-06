@@ -23,4 +23,21 @@ class Database{
         }
         return self::$pdo;
     }
+
+    private function defParams($stmt, $key, $value){
+        $stmt->bindParam($key,$value);
+    }
+
+    private function makeQuery($stmt, $params){
+        foreach($params as $key => $value){
+            $this->defParams($stmt, $key, $value);
+        }
+    }
+
+    public function execQuery(string $query, array $params = []){
+        $stmt = $this->conn()->prepare($query);
+        $this->makeQuery($stmt, $params);
+        $stmt->execute();
+        return $stmt;
+    }
 }
