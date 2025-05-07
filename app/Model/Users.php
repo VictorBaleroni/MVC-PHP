@@ -21,8 +21,18 @@ class Users{
         return $this->conn->findById($sql, ['id' => $id]);
     }
 
-    public function updateUser($arr = []){
+    public function insertUser($data = []){
+        $sql = "INSERT INTO users (name, email) VALUES (:name, :email)";
+        return $this->conn->insert($sql, $data);
+    }
+
+    public function updateUser($data = []){
         $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
-        return $this->conn->update($sql, $arr);
+        return $this->conn->update($sql, $data);
+    }
+
+    public function deleteUser($id){
+        $sql = "DELETE FROM users WHERE id = :id";
+        return $this->conn->delete($sql, ['id' => $id]);
     }
 }

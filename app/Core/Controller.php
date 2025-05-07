@@ -12,4 +12,8 @@ class Controller{
     public function view(string $view, $data = []){
         require '../App/Views/'. $view .'.php';
     }
+
+    public function pageNotFound(){
+        return $this->view('error');
+    }
 }
