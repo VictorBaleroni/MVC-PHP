@@ -8,8 +8,16 @@ class Database{
     protected static $pdo;
 
     public function __construct(){
+        loadEnv(dirname(__DIR__, 2).'/.env');
+        
+        $host = $_ENV['DB_HOST'];
+        $port = $_ENV['DB_PORT'];
+        $dbname = $_ENV['DB_NAME'];
+        $user = $_ENV['DB_USER'];
+        $pass = $_ENV['DB_PASS'];
+        
         try {
-            self::$pdo = new PDO('mysql:host=localhost;dbname=bancoCrudTrampo;charset=utf8','root','');
+            self::$pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $pass);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$pdo->exec('SET NAMES utf8');
         }catch(\PDOException $e){
