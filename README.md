@@ -2,11 +2,10 @@
 
 # Ferramentas
 * PHP 8.2.4
-* Javascript
-* Twig
+* composer 2.7.2
 * MySQL
-* Ratchet 0.4.4
 
 # Inicializar o projeto
 * composer update
-* 
+* config do banco de dados
+* ```php -S localhost:8080 -t ./public```
