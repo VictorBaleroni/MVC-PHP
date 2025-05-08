@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/userList.css">
     <title>MVC - User</title>
 </head>
 <body>
-    <h1>TESTE supremo kkk</h1>
-    <div>
+    <div class="head-app">
+        <h1>MVC</h1>
+        <a href="/">Voltar</a>
+    </div>
+    
+    <div class="cad-user">
+        <h2>Cadastrar Usuario</h2>
         <form action="/create" method="POST">
-            <input type="text" name="name" placeholder="name">
+            <input type="text" name="name" placeholder="nome">
             <input type="text" name="email" placeholder="email">
-            <input type="submit" value="ENV">
+            <input class="button-cad" type="submit" value="Enviar">
         </form>
     </div>
-    <div>
-        <ul>
-            <?php foreach($data['users'] as $key => $value): ?>
-                <li>
-                    <p>        
-                        <?= $value['name']; ?>
-                    </p>
-                    <p>        
-                        <?= $value['email']; ?>
-                    </p>
-                    <form action="/edit/<?= $value['id'] ?>" method="GET">
-                        <input type="submit" value="ACS">
-                    </form>
-                    <a href="/delete/<?= $value['id'] ?>">DELETE</a>
-                </li>
-            <?php endforeach ?>
-        </ul>
+    
+    <div class="list-users">
+        <?php foreach($data['users'] as $key => $value): ?>
+            <div class="div-master-user">
+                <div class="div-user">
+                    <p><?=$value['name']?></p>
+                    <p><?=$value['email']?></p>
+                    <a class="edit-button" href="/edit/<?= $value['id'] ?>">Editar</a>
+                    <a class="delete-button" href="/delete/<?= $value['id'] ?>">Deletar</a>
+                </div>
+            </div>
+        <?php endforeach ?>
     </div>
 </body>
 </html>
