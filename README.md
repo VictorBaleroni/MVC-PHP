@@ -6,6 +6,6 @@
 * MySQL
 
 # Inicializar o projeto
-* composer update
+* ```composer update```
 * config do banco de dados
 * ```php -S localhost:8080 -t ./public```
