@@ -1,1 +1,1 @@
-<h1>Mini framework em php usando o padrão MVC.</h1>
+<h3>MVC em PHP perfeito para aplicações onde o tamnho em memoria não comporta uma framework inteira.</h3>
