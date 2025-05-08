@@ -1,1 +1,1 @@
-<h3>MVC em PHP perfeito para aplicações dentro de servidores limitados em memoria onde não comporta uma framework inteira.</h3>
+<h3>MVC em PHP perfeito para aplicações com servidores limitados em memoria sem capacidade para uma framework inteira.</h3>
