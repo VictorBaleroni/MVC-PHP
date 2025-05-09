@@ -14,23 +14,24 @@ class App{
     public function __construct($routes){
         $this->routes = $routes;
         $this->uri = Uri::uri();
-        $URL_ARRAY = $this->parseUrl();
-        $this->getController($URL_ARRAY);
-        $this->getParams($URL_ARRAY);
-
+        $this->getController($this->uri);
+        $this->getParams($this->parseUrl());
+        
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
     private function parseUrl(){
         $REQUEST_URI = explode('/', substr($this->uri, 1));
-        $REQUEST_URI[0] = '/'.$REQUEST_URI[0];
         return $REQUEST_URI;
     }
 
     private function getController($url){
-        if( !empty($url[0]) && isset($url[0]) ){
+        if( !empty($url) ){
             foreach($this->routes as $path => $sepController){
-                if($path == $url[0]){
+                $pattern = '#^'.preg_replace('/{id}/', '(\w+)', $path).'$#';
+                
+                if(preg_match($pattern, $url, $matches)){
+                    array_shift($matches);
                     [$this->controller, $this->method] = explode('@', $sepController);
                     break;
                 }
