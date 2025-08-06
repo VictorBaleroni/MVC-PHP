@@ -1,4 +1,4 @@
-<h3>MVC em PHP ideal para aplicações com servidores limitados em memoria e sem capacidade para implementação de uma framework inteira.</h3>
+<h3>MVC em PHP ideal para aplicações com servidores limitados em memoria e sem capacidade para implementação de uma framework pesada.</h3>
 
 # Ferramentas
 * PHP 8.2.4
