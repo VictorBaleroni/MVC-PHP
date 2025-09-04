@@ -19,11 +19,6 @@ class App{
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    private function parseUrl(){
-        $REQUEST_URI = explode('/', substr($this->uri, 1));
-        return $REQUEST_URI;
-    }
-
     private function getController($url){
         if( !empty($url) ){
             foreach($this->routes as $path => $sepController){
