@@ -27,7 +27,7 @@
                 <div class="div-user">
                     <p><?=$value['name']?></p>
                     <p><?=$value['email']?></p>
-                    <a class="edit-button" href="/edit/<?= $value['id'] ?>">Editar</a>
+                    <a class="edit-button" href="/user/<?= $value['id'] ?>/edit">Editar</a>
                     <a class="delete-button" href="/delete/<?= $value['id'] ?>">Deletar</a>
                 </div>
             </div>

@@ -4,7 +4,7 @@ $routes = [
     '/' => 'HomeController@index',
     '/user' => 'UserController@index',
     '/create' => 'UserController@create',
-    '/edit/{id}' => 'UserController@edit',
+    '/user/{id}/edit' => 'UserController@edit',
     '/update/{id}' => 'UserController@update',
     '/delete/{id}' => 'UserController@delete'
 ];

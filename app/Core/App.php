@@ -15,7 +15,6 @@ class App{
         $this->routes = $routes;
         $this->uri = Uri::uri();
         $this->getController($this->uri);
-        $this->getParams($this->parseUrl());
         
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
@@ -31,7 +30,7 @@ class App{
                 $pattern = '#^'.preg_replace('/{id}/', '(\w+)', $path).'$#';
                 
                 if(preg_match($pattern, $url, $matches)){
-                    array_shift($matches);
+                    $this->getParams($matches);
                     [$this->controller, $this->method] = explode('@', $sepController);
                     break;
                 }
@@ -52,9 +51,9 @@ class App{
         }
     }
 
-    private function getParams($url){
-        if(count($url) > 1){
-            $this->params = array_slice($url, 1);
+    private function getParams($params){
+        if(count($params) > 1){
+            $this->params = array_slice($params, 1);
         }
     }
 }
